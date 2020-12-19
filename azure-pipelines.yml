@@ -45,7 +45,7 @@ steps:
     frameworkOption: 'espresso'
     espressoBuildDirectory: '$(Build.SourcesDirectory)/app/build/outputs/apk/androidTest/debug'
     credentialsOption: 'serviceEndpoint'
-    serverEndpoint: 'App Center Token'
+    serverEndpoint: 'appcenter-connection'
     appSlug: 'vinara-microsoft.com/Sample-Android-App'
     devices: 'ef7113b6'
     localeOption: 'en_US'
