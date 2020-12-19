@@ -46,14 +46,14 @@ steps:
     espressoBuildDirectory: '$(Build.SourcesDirectory)/app/build/outputs/apk/androidTest/debug'
     credentialsOption: 'serviceEndpoint'
     serverEndpoint: 'App Center Token'
-    appSlug: 'XTCTeam/appcenter-sampleapp-android'
+    appSlug: 'vinara-microsoft.com/Sample-Android-App'
     devices: 'ef7113b6'
     localeOption: 'en_US'
 
 - task: AppCenterDistribute@3
   inputs:
-    serverEndpoint: 'App Center Token'
-    appSlug: 'XTCTeam/appcenter-sampleapp-android'
+    serverEndpoint: 'appcenter-connection'
+    appSlug: 'vinara-microsoft.com/Sample-Android-App'
     appFile: '$(Build.SourcesDirectory)/app/build/outputs/apk/release/*.apk'
     symbolsOption: 'Android'
     symbolsMappingTxtFile: '$(Build.SourcesDirectory)/app/build/outputs/mapping/release/mapping.txt'
