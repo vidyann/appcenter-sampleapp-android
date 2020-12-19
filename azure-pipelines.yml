@@ -30,11 +30,11 @@ steps:
     sonarQubeRunAnalysis: false
 - task: DownloadSecureFile@1
   inputs:
-    secureFile: 'appcenter-sampleapp.keystore'
+    secureFile: 'android.jks'
 - task: AndroidSigning@3
   inputs:
     apkFiles: '$(Build.SourcesDirectory)/app/build/outputs/apk/release/*.apk'
-    apksignerKeystoreFile: 'appcenter-sampleapp.keystore'
+    apksignerKeystoreFile: 'android.jks'
     apksignerKeystorePassword: '$(keystore-password)'
     apksignerKeystoreAlias: '$(android-alias)'
     apksignerKeyPassword: '$(android-key-password)'
