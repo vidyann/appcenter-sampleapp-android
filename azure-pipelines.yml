@@ -14,7 +14,7 @@ pool:
   vmImage: 'macos-latest'
 
 variables:
-- group: sampleapp-keystore
+- group: app-var-group
 
 steps:
 - task: Gradle@2
@@ -30,14 +30,14 @@ steps:
     sonarQubeRunAnalysis: false
 - task: DownloadSecureFile@1
   inputs:
-    secureFile: 'android.jks'
+    secureFile: 'android1.jks'
 - task: AndroidSigning@3
   inputs:
     apkFiles: '$(Build.SourcesDirectory)/app/build/outputs/apk/release/*.apk'
-    apksignerKeystoreFile: 'android.jks'
-    apksignerKeystorePassword: '$(keystore-password)'
-    apksignerKeystoreAlias: '$(android-alias)'
-    apksignerKeyPassword: '$(android-key-password)'
+    apksignerKeystoreFile: 'android1.jks'
+    apksignerKeystorePassword: '$(keystorePass)'
+    apksignerKeystoreAlias: '$(keystoreAlias)'
+    apksignerKeyPassword: '$(keyPass)'
 - task: AppCenterTest@1
   inputs:
     appFile: '$(Build.SourcesDirectory)/app/build/outputs/apk/debug/*.apk'
