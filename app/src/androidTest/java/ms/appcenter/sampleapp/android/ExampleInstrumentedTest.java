@@ -56,8 +56,22 @@ public class ExampleInstrumentedTest {
     }
     
     @Test
+    public BuildAction() {
+        try (ActivityScenario scenario = ActivityScenario.launch(MainActivity.class)) {
+            onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Build"))).perform(click());
+
+        }
+    }
+
+    
+    @Test
+    public void accessibilityChecksfromRoot() {
+        AccessibilityChecks.enable().setRunChecksFromRootView(true);
+    }
+
+    
+    @Test
     public void accessibilityChecks() {
-        /*AccessibilityChecks.enable().setRunChecksFromRootView(true);*/
         AccessibilityChecks.enable();
         try (ActivityScenario scenario = ActivityScenario.launch(MainActivity.class)) {
            // onView(withId(R.id.crashButton)).perform(click());
@@ -66,5 +80,7 @@ public class ExampleInstrumentedTest {
 
         }
     }
+    
+
 
 }
