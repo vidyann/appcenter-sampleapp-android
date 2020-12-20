@@ -28,6 +28,8 @@ import static org.junit.Assert.assertEquals;
 
 import static androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.allOf;
+
 
 
 /**
