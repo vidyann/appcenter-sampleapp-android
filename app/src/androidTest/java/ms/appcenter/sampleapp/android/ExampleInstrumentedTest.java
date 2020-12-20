@@ -10,6 +10,9 @@ import org.junit.After;
 import com.microsoft.appcenter.espresso.Factory;
 import com.microsoft.appcenter.espresso.ReportHelper;
 
+import androidx.test.espresso.accessibility.AccessibilityChecks;
+
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -37,4 +40,13 @@ public class ExampleInstrumentedTest {
 
         assertEquals("ms.appcenter.sampleapp.android", appContext.getPackageName());
     }
+    
+    @Test
+    public void accessibilityChecks() {
+        AccessibilityChecks.enable();
+        try (ActivityScenario scenario = ActivityScenario.launch(MainActivity.class)) {
+            onView(withId(R.id.openBrowserButton)).perform(click());
+        }
+    }
+
 }
