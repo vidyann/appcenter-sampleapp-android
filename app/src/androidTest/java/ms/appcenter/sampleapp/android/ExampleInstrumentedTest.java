@@ -53,7 +53,7 @@ public class ExampleInstrumentedTest {
     public void accessibilityChecks() {
         /*AccessibilityChecks.enable().setRunChecksFromRootView(true);*/
         AccessibilityChecks.enable();
-        try (ActivityScenario scenario = ActivityScenario.launch(CrashesActivity.class)) {
+        try (ActivityScenario scenario = ActivityScenario.launch(MainActivity.class)) {
             onView(withId(R.id.crashButton)).perform(click());
         }
     }
