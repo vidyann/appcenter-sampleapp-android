@@ -51,7 +51,8 @@ public class ExampleInstrumentedTest {
     
     @Test
     public void accessibilityChecks() {
-        AccessibilityChecks.enable();
+        AccessibilityChecks.enable().setRunChecksFromRootView(true);
+
         /*try (ActivityScenario scenario = ActivityScenario.launch(MainActivity.class)) {
             onView(withId(R.id.openBrowserButton)).perform(click());
         }*/
