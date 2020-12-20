@@ -56,7 +56,7 @@ public class ExampleInstrumentedTest {
     }
     
     @Test
-    public BuildAction() {
+    public void buildAction() {
         try (ActivityScenario scenario = ActivityScenario.launch(MainActivity.class)) {
             onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Build"))).perform(click());
 
