@@ -56,9 +56,11 @@ public class ExampleInstrumentedTest {
     
     @Test
     public void buildAction() {
-        try (ActivityScenario scenario = ActivityScenario.launch(MainActivity.class)) {
-            onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Build"))).perform(click());
-
+        try {
+            AccessibilityChecks.disable();
+            try (ActivityScenario scenario = ActivityScenario.launch(MainActivity.class)) {
+                onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Build"))).perform(click());
+            }
         }
     }
 
@@ -71,15 +73,17 @@ public class ExampleInstrumentedTest {
     
     @Test
     public void accessibilityChecks() {
-        AccessibilityChecks.enable().setRunChecksFromRootView(true);
-        try (ActivityScenario scenario = ActivityScenario.launch(MainActivity.class)) {
-           // onView(withId(R.id.crashButton)).perform(click());
-            //onView(withId(R.id.titles)).perform(clickBetweenTwoTitles("Red", "Green"));
-            onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Build"))).perform(click());
-
-         } catch (AccessibilityViewCheckException e) {
-            assertEquals(1, e.getResults().size());
-         }
+        try {
+            AccessibilityChecks.enable().setRunChecksFromRootView(true);
+            try (ActivityScenario scenario = ActivityScenario.launch(MainActivity.class)) {
+                // onView(withId(R.id.crashButton)).perform(click());
+                //onView(withId(R.id.titles)).perform(clickBetweenTwoTitles("Red", "Green"));
+                onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Build"))).perform(click());
+            }
+            catch (AccessibilityViewCheckException e) {
+                assertEquals(1, e.getResults().size());
+            }
+        }
 
     }
     
