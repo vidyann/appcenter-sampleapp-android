@@ -57,7 +57,6 @@ public class ExampleInstrumentedTest {
     public void buildAction() {
         //Click build with no accessibility checks
         try {
-            AccessibilityChecks.disable();
             try (ActivityScenario scenario = ActivityScenario.launch(MainActivity.class)) {
                 onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Build"))).perform(click());
             }
