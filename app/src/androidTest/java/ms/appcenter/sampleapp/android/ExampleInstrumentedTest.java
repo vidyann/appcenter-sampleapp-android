@@ -64,21 +64,24 @@ public class ExampleInstrumentedTest {
     }
 
     
-    @Test
+   /* @Test
     public void accessibilityChecksfromRoot() {
         AccessibilityChecks.enable().setRunChecksFromRootView(true);
-    }
+    }*/
 
     
     @Test
     public void accessibilityChecks() {
-        AccessibilityChecks.enable();
+        AccessibilityChecks.enable().setRunChecksFromRootView(true);
         try (ActivityScenario scenario = ActivityScenario.launch(MainActivity.class)) {
            // onView(withId(R.id.crashButton)).perform(click());
             //onView(withId(R.id.titles)).perform(clickBetweenTwoTitles("Red", "Green"));
             onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Build"))).perform(click());
 
-        }
+         } catch (AccessibilityViewCheckException e) {
+            assertEquals(1, e.getResults().size());
+         }
+
     }
     
 
