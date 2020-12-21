@@ -59,6 +59,8 @@ public class ExampleInstrumentedTest {
         try {
             try (ActivityScenario scenario = ActivityScenario.launch(MainActivity.class)) {
                 onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Build"))).perform(click());
+            } catch (AccessibilityViewCheckException e) {
+                assertEquals(1, e.getResults().size());
             }
         } catch (IllegalStateException exception) {
         }
@@ -69,7 +71,8 @@ public class ExampleInstrumentedTest {
     public void accessibilityChecks() {
         //Enable accessibility and retry the checks
         try {
-            AccessibilityChecks.enable().setRunChecksFromRootView(true);
+            //AccessibilityChecks.enable().setRunChecksFromRootView(true);
+            AccessibilityChecks.enable();
             try (ActivityScenario scenario = ActivityScenario.launch(MainActivity.class)) {
                 // onView(withId(R.id.crashButton)).perform(click());
                 //onView(withId(R.id.titles)).perform(clickBetweenTwoTitles("Red", "Green"));
