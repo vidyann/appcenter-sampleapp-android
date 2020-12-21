@@ -9,7 +9,6 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 import androidx.test.core.app.ActivityScenario;
-import androidx.test.espresso.accessibility.AccessibilityChecks;
 import androidx.test.filters.LargeTest;
 
 
@@ -19,7 +18,7 @@ import com.microsoft.appcenter.espresso.Factory;
 import com.microsoft.appcenter.espresso.ReportHelper;
 
 import androidx.test.espresso.accessibility.AccessibilityChecks;
-
+import com.google.android.apps.common.testing.accessibility.framework.integrations.AccessibilityViewCheckException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
