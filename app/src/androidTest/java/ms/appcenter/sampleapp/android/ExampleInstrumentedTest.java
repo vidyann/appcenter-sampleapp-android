@@ -32,7 +32,7 @@ import static org.hamcrest.Matchers.allOf;
 
 
 /**
- * Instrumentation test, which will execute on an Android device.
+ * Instrumentation test, which will execute on an Android device. The tests also include accessibility checks
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
