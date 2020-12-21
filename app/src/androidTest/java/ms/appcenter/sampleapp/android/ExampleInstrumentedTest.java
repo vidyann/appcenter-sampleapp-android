@@ -50,12 +50,12 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-
         assertEquals("ms.appcenter.sampleapp.android", appContext.getPackageName());
     }
     
     @Test
     public void buildAction() {
+        //Click build with no accessibility checks
         try {
             AccessibilityChecks.disable();
             try (ActivityScenario scenario = ActivityScenario.launch(MainActivity.class)) {
@@ -65,14 +65,9 @@ public class ExampleInstrumentedTest {
     }
 
     
-   /* @Test
-    public void accessibilityChecksfromRoot() {
-        AccessibilityChecks.enable().setRunChecksFromRootView(true);
-    }*/
-
-    
     @Test
     public void accessibilityChecks() {
+        //Enable accessibility and retry the checks
         try {
             AccessibilityChecks.enable().setRunChecksFromRootView(true);
             try (ActivityScenario scenario = ActivityScenario.launch(MainActivity.class)) {
