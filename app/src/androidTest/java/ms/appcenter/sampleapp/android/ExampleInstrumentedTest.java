@@ -80,7 +80,7 @@ public class ExampleInstrumentedTest {
                 onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Build"))).perform(click());
             }
             catch (AccessibilityViewCheckException e) {
-                reportHelper.label(e.getMessage());
+                reportHelper.label(e.getCause().getMessage());
                 assertEquals(1, e.getResults().size());
             }
         } catch (IllegalStateException exception) {
