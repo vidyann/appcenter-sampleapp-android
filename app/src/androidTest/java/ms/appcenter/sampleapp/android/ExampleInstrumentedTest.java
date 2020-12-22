@@ -53,7 +53,7 @@ public class ExampleInstrumentedTest {
         assertEquals("ms.appcenter.sampleapp.android", appContext.getPackageName());
     }
     
-    @Test
+    /* @Test
     public void buildAction() {
         //Click build with no accessibility checks
         try {
@@ -65,7 +65,7 @@ public class ExampleInstrumentedTest {
             }
         } catch (IllegalStateException exception) {
         }
-    }
+    }*/
 
     
     @Test
