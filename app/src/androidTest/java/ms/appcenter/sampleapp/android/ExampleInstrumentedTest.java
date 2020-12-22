@@ -60,6 +60,7 @@ public class ExampleInstrumentedTest {
             try (ActivityScenario scenario = ActivityScenario.launch(MainActivity.class)) {
                 onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Build"))).perform(click());
             } catch (AccessibilityViewCheckException e) {
+                reportHelper.label(e.getMessage());
                 assertEquals(1, e.getResults().size());
             }
         } catch (IllegalStateException exception) {
@@ -79,6 +80,7 @@ public class ExampleInstrumentedTest {
                 onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Build"))).perform(click());
             }
             catch (AccessibilityViewCheckException e) {
+                reportHelper.label(e.getMessage());
                 assertEquals(1, e.getResults().size());
             }
         } catch (IllegalStateException exception) {
