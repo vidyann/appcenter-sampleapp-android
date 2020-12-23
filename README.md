@@ -31,6 +31,8 @@ First navigate to the **Getting Started** tutorial linked below. After following
 
 ### Added functionality
 
+Added sample accessibility UI tests to be executed in real devices 
+
 Using Gradle you can pass environment variables into your Build Configuration and use them as variables within your application.
 
 For more information on how to do so, visit our docs here: [Build time environment variables using Gradle](https://docs.microsoft.com/en-us/appcenter/build/custom/variables/#buildgradle-for-android)
