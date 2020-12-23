@@ -67,7 +67,7 @@ public class ExampleInstrumentedTest {
             }
             catch (AccessibilityViewCheckException e) {
                 assertEquals(1, e.getResults().size());
-                reportHelper.label(e.getResults().get(0).getMessage());
+                reportHelper.label(e.getResults().get(0).getMessage().toString());
 
             }
         } catch (IllegalStateException exception) {
