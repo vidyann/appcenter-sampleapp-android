@@ -52,20 +52,6 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         assertEquals("ms.appcenter.sampleapp.android", appContext.getPackageName());
     }
-    
-    /* @Test
-    public void buildAction() {
-        //Click build with no accessibility checks
-        try {
-            try (ActivityScenario scenario = ActivityScenario.launch(MainActivity.class)) {
-                onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Build"))).perform(click());
-            } catch (AccessibilityViewCheckException e) {
-                reportHelper.label(e.getMessage());
-                assertEquals(1, e.getResults().size());
-            }
-        } catch (IllegalStateException exception) {
-        }
-    }*/
 
     
     @Test
@@ -80,7 +66,7 @@ public class ExampleInstrumentedTest {
                 onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Build"))).perform(click());
             }
             catch (AccessibilityViewCheckException e) {
-                reportHelper.label(e.getCause().getMessage());
+                reportHelper.label(e);
                 assertEquals(1, e.getResults().size());
             }
         } catch (IllegalStateException exception) {
