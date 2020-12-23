@@ -66,8 +66,9 @@ public class ExampleInstrumentedTest {
                 onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Build"))).perform(click());
             }
             catch (AccessibilityViewCheckException e) {
-                reportHelper.label(e);
                 assertEquals(1, e.getResults().size());
+                reportHelper.label(e.getResults().get(0).getMessage());
+
             }
         } catch (IllegalStateException exception) {
         }
