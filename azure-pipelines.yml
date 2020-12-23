@@ -14,7 +14,7 @@ pool:
   vmImage: 'macos-latest'
 
 variables:
-- group: sampleapp-keystore
+- group: app-var-group
 
 steps:
 - task: Gradle@2
@@ -30,14 +30,14 @@ steps:
     sonarQubeRunAnalysis: false
 - task: DownloadSecureFile@1
   inputs:
-    secureFile: 'appcenter-sampleapp.keystore'
+    secureFile: 'android1.jks'
 - task: AndroidSigning@3
   inputs:
     apkFiles: '$(Build.SourcesDirectory)/app/build/outputs/apk/release/*.apk'
-    apksignerKeystoreFile: 'appcenter-sampleapp.keystore'
-    apksignerKeystorePassword: '$(keystore-password)'
-    apksignerKeystoreAlias: '$(android-alias)'
-    apksignerKeyPassword: '$(android-key-password)'
+    apksignerKeystoreFile: 'android1.jks'
+    apksignerKeystorePassword: '$(keystorePass)'
+    apksignerKeystoreAlias: '$(keystoreAlias)'
+    apksignerKeyPassword: '$(keyPass)'
 - task: AppCenterTest@1
   inputs:
     appFile: '$(Build.SourcesDirectory)/app/build/outputs/apk/debug/*.apk'
@@ -45,15 +45,15 @@ steps:
     frameworkOption: 'espresso'
     espressoBuildDirectory: '$(Build.SourcesDirectory)/app/build/outputs/apk/androidTest/debug'
     credentialsOption: 'serviceEndpoint'
-    serverEndpoint: 'App Center Token'
-    appSlug: 'XTCTeam/appcenter-sampleapp-android'
+    serverEndpoint: 'appcenter-user-conn'
+    appSlug: 'vinara-microsoft.com/Sample-Android-App'
     devices: 'ef7113b6'
     localeOption: 'en_US'
 
 - task: AppCenterDistribute@3
   inputs:
-    serverEndpoint: 'App Center Token'
-    appSlug: 'XTCTeam/appcenter-sampleapp-android'
+    serverEndpoint: 'appcenter-connection'
+    appSlug: 'vinara-microsoft.com/Sample-Android-App'
     appFile: '$(Build.SourcesDirectory)/app/build/outputs/apk/release/*.apk'
     symbolsOption: 'Android'
     symbolsMappingTxtFile: '$(Build.SourcesDirectory)/app/build/outputs/mapping/release/mapping.txt'
