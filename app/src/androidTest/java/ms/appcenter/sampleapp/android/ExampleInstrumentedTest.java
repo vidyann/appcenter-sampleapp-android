@@ -31,6 +31,7 @@ import static org.hamcrest.Matchers.allOf;
 
 import java.util.List;
 import java.util.Locale;
+import com.google.android.apps.common.testing.accessibility.framework.AccessibilityViewCheckResult;
 
 
 
@@ -88,6 +89,8 @@ public class ExampleInstrumentedTest {
         // Lump all error result messages into one string to be the exception message
         // TODO(sjrush): allow for developers to set their own Locale, and use that instead of
         // Locale.US below, regardless of what Locale they're testing on.
+        List<AccessibilityViewCheckResult> results = e.getResults();
+
         String errorCountMessage = (results.size() == 1) ? "There was 1 accessibility error in " + viewName + ":\n" : String.format(Locale.US, "There were %d accessibility errors in " + viewName + ":\n", results.size());
         exceptionMessage.append(errorCountMessage);
         for (int i = 0; i < results.size(); i++) {
