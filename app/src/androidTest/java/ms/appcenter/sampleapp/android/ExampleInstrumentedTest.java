@@ -58,8 +58,8 @@ public class ExampleInstrumentedTest {
     public void accessibilityChecks() {
         //Enable accessibility and retry the checks
         try {
-            //AccessibilityChecks.enable().setRunChecksFromRootView(true);
-            AccessibilityChecks.enable();
+            AccessibilityChecks.enable().setRunChecksFromRootView(true);
+            //AccessibilityChecks.enable();
             try (ActivityScenario scenario = ActivityScenario.launch(MainActivity.class)) {
                 // onView(withId(R.id.crashButton)).perform(click());
                 //onView(withId(R.id.titles)).perform(clickBetweenTwoTitles("Red", "Green"));
