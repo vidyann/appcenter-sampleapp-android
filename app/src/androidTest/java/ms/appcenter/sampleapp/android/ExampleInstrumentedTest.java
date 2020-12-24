@@ -81,14 +81,26 @@ public class ExampleInstrumentedTest {
                 reportHelper.label(getMessages(e, "WelcomeView"));
 
             }
+            try {
+                onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Test"))).perform(click());
+            }
+            catch (AccessibilityViewCheckException e) {
+                reportHelper.label(getMessages(e, "BuildView"));
+            }
+            try {
+                onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Distribute"))).perform(click());
+            }
+            catch (AccessibilityViewCheckException e) {
+                reportHelper.label(getMessages(e, "TestView"));
+            }
+
+
         } catch (IllegalStateException exception) {
         }
     }
     
     private String getMessages(AccessibilityViewCheckException e, String viewName) {
         // Lump all error result messages into one string to be the exception message
-        // TODO(sjrush): allow for developers to set their own Locale, and use that instead of
-        // Locale.US below, regardless of what Locale they're testing on.
         List<AccessibilityViewCheckResult> results = e.getResults();
 
         String errorCountMessage = (results.size() == 1) ? "There was 1 accessibility error in " + viewName + ":\n" : String.format(Locale.US, "There were %d accessibility errors in " + viewName + ":\n", results.size());
