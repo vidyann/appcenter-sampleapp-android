@@ -59,8 +59,10 @@ public class ExampleInstrumentedTest {
         //Enable accessibility and retry the checks
         try {
             AccessibilityChecks.enable().setRunChecksFromRootView(true);
+            ActivityScenario scenario = ActivityScenario.launch(MainActivity.class);
             //AccessibilityChecks.enable();
-            try (ActivityScenario scenario = ActivityScenario.launch(MainActivity.class)) {
+            //try (ActivityScenario scenario = ActivityScenario.launch(MainActivity.class)) {
+            try {
                 // onView(withId(R.id.crashButton)).perform(click());
                 //onView(withId(R.id.titles)).perform(clickBetweenTwoTitles("Red", "Green"));
                 onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Build"))).perform(click());
