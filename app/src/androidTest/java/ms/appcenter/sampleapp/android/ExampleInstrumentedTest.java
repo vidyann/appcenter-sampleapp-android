@@ -74,26 +74,14 @@ public class ExampleInstrumentedTest {
                 // onView(withId(R.id.crashButton)).perform(click());
                 //onView(withId(R.id.titles)).perform(clickBetweenTwoTitles("Red", "Green"));
                 onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Build"))).perform(click());
+                onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Test"))).perform(click());
+                onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Distribute"))).perform(click());
             }
             catch (AccessibilityViewCheckException e) {
                 //assertEquals(1, e.getResults().size());
                 //reportHelper.label(e.getResults().get(0).getMessage().toString());
-                reportHelper.label(getMessages(e, "WelcomeView"));
-
+                reportHelper.label(getMessages(e, "MainView"));
             }
-            try {
-                onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Test"))).perform(click());
-            }
-            catch (AccessibilityViewCheckException e) {
-                reportHelper.label(getMessages(e, "BuildView"));
-            }
-            try {
-                onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Distribute"))).perform(click());
-            }
-            catch (AccessibilityViewCheckException e) {
-                reportHelper.label(getMessages(e, "TestView"));
-            }
-
 
         } catch (IllegalStateException exception) {
         }
