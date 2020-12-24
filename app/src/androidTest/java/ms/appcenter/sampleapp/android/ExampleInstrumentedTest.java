@@ -29,6 +29,10 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
+import java.util.List;
+import java.util.Locale;
+
+
 
 
 /**
@@ -38,8 +42,11 @@ import static org.hamcrest.Matchers.allOf;
  */
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
+
     @Rule
     public ReportHelper reportHelper = Factory.getReportHelper();
+    StringBuilder exceptionMessage = new StringBuilder();
+
 
     @After
     public void TearDown() {
@@ -68,14 +75,32 @@ public class ExampleInstrumentedTest {
                 onView(allOf(isDescendantOfA(withId(R.id.pager_title_strip)), withText("Build"))).perform(click());
             }
             catch (AccessibilityViewCheckException e) {
-                assertEquals(1, e.getResults().size());
+                //assertEquals(1, e.getResults().size());
                 //reportHelper.label(e.getResults().get(0).getMessage().toString());
-                reportHelper.label(e.getMessage());
+                reportHelper.label(getMessages(e, "WelcomeView"));
 
             }
         } catch (IllegalStateException exception) {
         }
     }
+    
+    private String getMessages(AccessibilityViewCheckException e, String viewName) {
+        // Lump all error result messages into one string to be the exception message
+        // TODO(sjrush): allow for developers to set their own Locale, and use that instead of
+        // Locale.US below, regardless of what Locale they're testing on.
+        String errorCountMessage = (results.size() == 1) ? "There was 1 accessibility error in " + viewName + ":\n" : String.format(Locale.US, "There were %d accessibility errors in " + viewName + ":\n", results.size());
+        exceptionMessage.append(errorCountMessage);
+        for (int i = 0; i < results.size(); i++) {
+            if (i > 0) {
+                exceptionMessage.append(",\n");
+            }
+            AccessibilityViewCheckResult result = results.get(i);
+            //exceptionMessage.append(resultDescriptor.describeResult(result));
+            exceptionMessage.append(result.getMessage().toString());
+        }
+        return exceptionMessage.toString();
+    }
+
     
 
 }
